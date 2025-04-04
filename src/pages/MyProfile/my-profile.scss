@@ -1,0 +1,19 @@
+.my-profile {
+    &__card {
+        margin: 0 auto;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    &__title {
+        text-align: center;
+        margin: 0 !important;
+    }
+
+    &__role-wrapper {
+        max-width: 400px;
+        width: 100%;
+        margin-top: 20px;
+        display: block;
+    }
+}

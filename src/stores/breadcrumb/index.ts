@@ -1,0 +1,1 @@
+export {breadcrumbStore} from './breadcrumb';

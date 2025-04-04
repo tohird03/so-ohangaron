@@ -1,0 +1,12 @@
+.ant-table tr.drop-over {
+  &--downward td {
+    transition: .2s ease;
+    border-bottom: 2px dashed #1890ff !important;
+  }
+
+  &--upward td {
+    transition: .2s ease;
+    border-top: 2px dashed #1890ff !important;
+  }
+}
+

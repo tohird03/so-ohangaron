@@ -1,0 +1,51 @@
+@import "styles/colors";
+
+$class: breadcrumb;
+
+.breadcrumb__items {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.#{$class} {
+  & ol > li {
+    align-items: center;
+    display: inline-flex;
+  }
+
+  & .ant-breadcrumb-separator {
+    color: $white;
+    margin-inline: 10px;
+  }
+
+  & .anticon {
+    font-size: 16px;
+  }
+
+  &__item {
+    color: $white;
+    display: inline-flex;
+  }
+
+  &__link.#{$class}__link {
+    color: $colorPrimary;
+    display: inline-flex;
+    font-size: 16px;
+    gap: 10px;
+
+    &:hover {
+      color: rgba($colorPrimary, .8);
+    }
+  }
+
+  &__item-active {
+    color: $white;
+    display: inline-flex;
+    font-size: 16px;
+    gap: 5px;
+  }
+}

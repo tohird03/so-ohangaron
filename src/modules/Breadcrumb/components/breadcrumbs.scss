@@ -1,0 +1,49 @@
+.simple-breadcrumb {
+  &__items {
+    display: inline-flex;
+    margin: 0;
+    padding: 0 4px;
+    position: relative;
+  }
+}
+
+.breadcrumb-items {
+  &__item {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  &__element {
+    border-radius: 3px;
+    color: white;
+    padding: 0 10px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+  &__link {
+    border-radius: 3px;
+    color: #bc8e5b;
+    padding: 0 10px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      color: #bc8e5b;
+    }
+  }
+}
+
+.menu-block {
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.separator {
+  color: #BC8E5B;
+  font-size: 20px;
+}

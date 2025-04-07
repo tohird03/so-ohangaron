@@ -38,9 +38,6 @@ export const MyDocument = forwardRef<any, Props>(({ order }, ref) => (
               <Text style={styles.titleSpanData}>{order?.client?.name}    {phoneFormat(order?.client?.phone?.slice(3))}</Text>
             </View>
           </View>
-          <View>
-            <Image style={styles.logoImage} src={LogoImg} />
-          </View>
         </View>
 
         {/* Jadval */}

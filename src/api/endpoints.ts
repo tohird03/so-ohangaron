@@ -49,10 +49,10 @@ export enum Endpoints {
 
 const config: Record<string, TStage> = {
   dev: {
-    apiUrl: 'https://santexnika.mirabdulloh.uz',
+    apiUrl: 'https://client2.mirabdulloh.uz',
   },
   prod: {
-    apiUrl: 'https://santexnika.mirabdulloh.uz',
+    apiUrl: 'https://client2.mirabdulloh.uz',
   },
 };
 

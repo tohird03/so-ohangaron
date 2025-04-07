@@ -24,12 +24,12 @@ export const Header = observer(({ collapsed, onCollapsedClick, isMobile }: Props
         key: '2',
         label: (
           <>
-            <Typography.Title level={5} style={{ margin: '0' }}>
+            {/* <Typography.Title level={5} style={{ margin: '0' }}>
               {authStore.staffInfo?.name}
             </Typography.Title>
             <Typography.Title level={5} style={{ margin: '0' }}>
               +{authStore.staffInfo?.phone}
-            </Typography.Title>
+            </Typography.Title> */}
           </>
         ),
       }] : []),
@@ -50,7 +50,7 @@ export const Header = observer(({ collapsed, onCollapsedClick, isMobile }: Props
         {isMobile && <span className="layout__logo-text">SAS Ideal</span>}
 
         <div className="header__profile">
-          {!isMobile && (
+          {/* {!isMobile && (
             <>
               <Typography.Title level={5} style={{ color: 'white', margin: '0' }}>
                 {authStore.staffInfo?.name}
@@ -59,7 +59,7 @@ export const Header = observer(({ collapsed, onCollapsedClick, isMobile }: Props
                 +{authStore.staffInfo?.phone}
               </Typography.Title>
             </>
-          )}
+          )} */}
           <Dropdown menu={{ items }} placement="bottomRight">
             <Avatar style={{ backgroundColor: '#1677FF' }} icon={<UserOutlined />} />
           </Dropdown>

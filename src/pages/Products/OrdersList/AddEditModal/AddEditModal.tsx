@@ -93,6 +93,7 @@ export const AddEditModal = observer(() => {
       id: ordersStore?.order?.id!,
       sendUser: ordersStore?.isSendUser,
       clientId: form.getFieldValue('clientId'),
+      sum: form.getFieldValue('sum'),
     })
       .then(() => {
         queryClient.invalidateQueries({ queryKey: ['getOrders'] });
@@ -145,6 +146,7 @@ export const AddEditModal = observer(() => {
         id: ordersStore?.order?.id,
         clientId: values?.clientId,
         sendUser: ordersStore?.isSendUser,
+        sum: values?.sum!,
       })
         .catch(addNotification);
 
@@ -222,10 +224,6 @@ export const AddEditModal = observer(() => {
 
   const handleFocusToProduct = () => {
     setIsOpenProductSelect(true);
-  };
-
-  const handleChaneCheckbox = (event: CheckboxChangeEvent) => {
-    ordersStore.setIsSendUser(event.target?.checked);
   };
 
   const handleChangeProduct = (productId: string) => {
@@ -357,23 +355,26 @@ export const AddEditModal = observer(() => {
     {
       key: 'count',
       dataIndex: 'count',
-      title: 'Soni',
+      title: 'Soni/Narxi/Kg',
       align: 'center',
       render: (value, record) => (
         isUpdatingProduct?.id === record?.id ? (
-          <InputNumber
-            defaultValue={record?.count}
-            placeholder="Narxi"
-            disabled={isUpdatingProduct?.id !== record?.id}
-            onChange={handleChangeCount}
-            ref={changeCountRef}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                handleSaveAndUpdateOrderProduct();
-              }
-            }}
-          />
-        ) : <span onDoubleClick={handleDoubleClickChangeProduct?.bind(null, record, changeCountRef)}>{record?.count}</span>
+          <>
+            <InputNumber
+              defaultValue={record?.count}
+              placeholder="Narxi"
+              disabled={isUpdatingProduct?.id !== record?.id}
+              onChange={handleChangeCount}
+              ref={changeCountRef}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleSaveAndUpdateOrderProduct();
+                }
+              }}
+            />
+            <span>{record?.product?.unit}</span>
+          </>
+        ) : <span onDoubleClick={handleDoubleClickChangeProduct?.bind(null, record, changeCountRef)}>{record?.count} {record?.product?.unit}</span>
       ),
     },
     {
@@ -488,13 +489,33 @@ export const AddEditModal = observer(() => {
     }
   };
 
+  const handleChangeTotalPrice = (value: number | null) => {
+    if (ordersStore?.order?.id) {
+      ordersApi.updateOrder({
+        id: ordersStore?.order?.id!,
+        sum: value || 0,
+      })
+        .then(() => {
+          ordersStore.getSingleOrder(ordersStore.order?.id!);
+          queryClient.invalidateQueries({ queryKey: ['getOrders'] });
+          if (clientId) {
+            singleClientStore.getSingleClient(clientId!);
+          }
+        })
+        .catch(addNotification)
+        .finally(() => {
+          setCreateLoading(false);
+        });
+    }
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLFormElement>) => {
     if (e.key === 'Enter') {
       if (!form.getFieldValue('count')) {
         form.setFields([
           {
             name: 'count',
-            errors: ['Mahsulot sonini kiriting!'],
+            errors: ['Mahsulot soni/kg/metrini kiriting!'],
           },
         ]);
 
@@ -737,7 +758,7 @@ export const AddEditModal = observer(() => {
           />
         </Form.Item>
         <Form.Item
-          label="Mahsulot soni"
+          label="Mahsulot soni/metr/kg"
           rules={[{ required: true }]}
           name="count"
         >
@@ -749,9 +770,17 @@ export const AddEditModal = observer(() => {
           />
         </Form.Item>
         <Form.Item
-          name="sendUser"
+          name="sum"
+          initialValue={priceFormat(ordersStore?.order?.sum)}
+          label="Umumiy qiymati"
         >
-          <Checkbox onChange={handleChaneCheckbox}>Mijozga bu sotuv haqida yuborilsinmi?</Checkbox>
+          <InputNumber
+            placeholder="Sotuvning umumiy qiymati"
+            style={{ width: '100%' }}
+            ref={countInputRef}
+            formatter={(value) => priceFormat(value!)}
+            onChange={handleChangeTotalPrice}
+          />
         </Form.Item>
         <Button
           onClick={handleCreateOrUpdateOrder}
@@ -773,9 +802,7 @@ export const AddEditModal = observer(() => {
       />
 
       <div>
-        <p style={{ textAlign: 'end', fontSize: '24px', fontWeight: 'bold' }}>Umumiy qiymati: {
-          priceFormat(ordersStore?.order?.products?.reduce((prev, current) => prev + (current?.price * current?.count), 0))
-        }
+        <p style={{ textAlign: 'end', fontSize: '24px', fontWeight: 'bold' }}>Umumiy qiymati: {priceFormat(ordersStore?.order?.sum)}
         </p>
       </div>
     </Modal>

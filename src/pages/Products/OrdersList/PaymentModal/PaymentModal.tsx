@@ -108,7 +108,7 @@ export const PaymentModal = observer(() => {
       }
     }
 
-    const totalPriceCalc = ordersStore?.order?.products?.reduce((prev, current) => prev + (current?.price * current?.count), 0);
+    const totalPriceCalc = ordersStore?.order?.sum;
 
     setTotalPrice(totalPriceCalc || 0);
   }, [ordersStore.orderPayment, ordersStore?.order?.products]);

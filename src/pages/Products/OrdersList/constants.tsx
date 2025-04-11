@@ -278,7 +278,7 @@ export const ordersInfoProductsColumns: ColumnType<IOrderProducts>[] = [
     title: 'Soni',
     align: 'center',
     width: '150px',
-    render: (value, record) => record?.count,
+    render: (value, record) => `${record?.count} ${record?.product?.unit}`,
   },
   {
     key: 'cost',

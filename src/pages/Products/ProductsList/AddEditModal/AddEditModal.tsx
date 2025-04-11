@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Form, Input, InputNumber, Modal } from 'antd';
+import { Form, Input, InputNumber, Modal, Select } from 'antd';
 import { addNotification } from '@/utils';
 import { productsListStore } from '@/stores/products';
 import { priceFormat } from '@/utils/priceFormat';
@@ -105,6 +105,29 @@ export const AddEditModal = observer(() => {
             placeholder="Qoldiq mahsulot"
             style={{ width: '100%' }}
             formatter={(value) => priceFormat(value!)}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Mahsulot birligi"
+          rules={[{ required: true }]}
+          name="unit"
+        >
+          <Select
+            options={[
+              {
+                label: 'dona',
+                value: 'dona',
+              },
+              {
+                label: 'kg',
+                value: 'kg',
+              },
+              {
+                label: 'metr',
+                value: 'metr',
+              },
+            ]}
+            placeholder="Birlik"
           />
         </Form.Item>
         <Form.Item

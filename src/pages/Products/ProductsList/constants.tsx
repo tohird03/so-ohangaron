@@ -25,7 +25,7 @@ export const productsListColumn: ColumnType<IProducts>[] = [
     dataIndex: 'count',
     title: 'Qoldiq',
     align: 'center',
-    render: (value, record) => `${record?.count} dona`,
+    render: (value, record) => `${record?.count} ${record?.unit}`,
   },
   {
     key: 'cost',

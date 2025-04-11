@@ -58,7 +58,7 @@ export const MyDocument = forwardRef<any, Props>(({ order }, ref) => (
                 <Text style={{ ...styles.tableCell, maxWidth: '30px' }}>{index + 1}</Text>
                 <Text style={{ ...styles.tableCell, maxWidth: '280px', minWidth: '280px', textAlign: 'left' }}>{product?.product?.name}</Text>
                 <Text style={{ ...styles.tableCell, maxWidth: '35px' }} />
-                <Text style={{ ...styles.tableCell }}>{product?.count}</Text>
+                <Text style={{ ...styles.tableCell }}>{product?.count} {product?.product?.unit}</Text>
                 <Text style={{ ...styles.tableCell }}>{product?.price}</Text>
                 <Text style={{ ...styles.tableCell }}>{priceFormat(product?.count * product?.price)}</Text>
               </View>
@@ -100,10 +100,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    marginTop: -40,
   },
   titleInfo: {
-    marginBottom: -30,
   },
   title: {
     fontSize: 12,
@@ -112,6 +110,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     width: '70%',
+    gap: '20',
   },
   titleSpan: {
     fontSize: 12,
@@ -134,11 +133,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   table: {
-    marginTop: -40,
     width: '100%',
     borderWidth: 1,
     borderColor: 'black',
     marginBottom: 10,
+    marginTop: 20,
   },
   tableHeader: {
     flexDirection: 'row',

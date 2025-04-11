@@ -308,7 +308,7 @@ export const AddEditModal = observer(() => {
             disabled={isUpdatingProduct?.id !== record?.id}
             onChange={handleChangeCount}
           />
-        ) : <span>{record?.count}</span>
+        ) : <span>{record?.count} {record?.product?.unit}</span>
       ),
     },
     {
@@ -637,7 +637,7 @@ export const AddEditModal = observer(() => {
           />
         </Form.Item>
         <Form.Item
-          label="Mahsulot soni"
+          label="Mahsulot soni/metr/kg"
           rules={[{ required: true }]}
           name="count"
         >

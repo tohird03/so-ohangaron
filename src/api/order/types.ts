@@ -33,6 +33,7 @@ export interface IOrderProducts {
   price: number;
   avarage_cost: number;
   product: IProducts;
+  unit: string;
 }
 
 export interface IAddOrderProducts {
@@ -44,6 +45,7 @@ export interface IAddOrderProducts {
 export interface IAddOrderModalForm extends IAddOrderProducts {
   clientId: string;
   sellingDate: string;
+  sum: number;
 }
 
 export interface IAddOrder {
@@ -58,7 +60,8 @@ export interface IUpdateOrder {
   clientId?: string;
   sellingDate?: Date | string;
   accepted?: boolean;
-  sendUser: boolean;
+  sendUser?: boolean;
+  sum?: number;
 }
 
 export interface IUploadOrderToExelParams extends IGetOrdersParams {

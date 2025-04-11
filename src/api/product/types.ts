@@ -20,6 +20,7 @@ export interface IProducts {
   // Foyda
   avarage_cost: number;
   lastSale: string;
+  unit: string;
 }
 
 export interface IAddEditProduct {

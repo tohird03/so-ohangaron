@@ -12,6 +12,7 @@ export enum Endpoints {
   // STAFFS
   Staffs = '/admin',
   StaffsPayments = '/employeePayment',
+  Expenses = '/expenses',
 
   // CLIENTS
   Users = '/user',
@@ -25,6 +26,7 @@ export enum Endpoints {
 
   // PRODUCTS
   products = '/product',
+  productPriceChange = '/product/increase-product-price',
   productsIncomeOrder = '/incomingOrder',
   productsIncomeOrderProduct = '/incomingProduct',
   productsOrder = '/Order',

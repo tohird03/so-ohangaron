@@ -3,7 +3,7 @@ import {authStore} from './auth';
 import {breadcrumbStore} from './breadcrumb';
 import {profileStore} from './profile';
 import {clientsInfoStore, paymentsStore, singleClientStore} from './clients';
-import {staffsStore} from './workers';
+import {staffsStore, expensesStore} from './workers';
 import {supplierInfoStore, supplierPaymentsStore, singleSupplierStore} from './supplier';
 import {productsListStore, incomeProductsStore, ordersStore, returnedOrdersStore} from './products';
 
@@ -23,6 +23,7 @@ export const stores = {
   incomeProductsStore,
   ordersStore,
   returnedOrdersStore,
+  expensesStore,
 };
 
 export const resetStores = () => {
@@ -41,4 +42,5 @@ export const resetStores = () => {
   incomeProductsStore.reset();
   ordersStore.reset();
   returnedOrdersStore.reset();
+  expensesStore.reset();
 };

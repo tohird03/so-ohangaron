@@ -155,6 +155,11 @@ export const mainMenuList: IMenuItems[] = [
         key: ROUTES.workersStaffsPayments,
         roleKey: IStaffPerKey.GET_STAFFS_PAYMENTS,
       },
+      {
+        label: <><SolutionOutlined />Harajatlar hisoboti</>,
+        key: ROUTES.workersExpenses,
+        roleKey: IStaffPerKey.GET_STAFFS_PAYMENTS,
+      },
     ],
   },
 ];

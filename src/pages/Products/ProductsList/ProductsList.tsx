@@ -14,6 +14,7 @@ import { productsListStore } from '@/stores/products';
 import { IProducts } from '@/api/product/types';
 import { priceFormat } from '@/utils/priceFormat';
 import { authStore } from '@/stores/auth';
+import { AddPriceModal } from './AddPriceModal';
 
 const cn = classNames.bind(styles);
 
@@ -37,6 +38,10 @@ export const ProductsList = observer(() => {
 
   const handleAddNewProduct = () => {
     productsListStore.setIsOpenAddEditProductModal(true);
+  };
+
+  const handleProductPriceChange = () => {
+    productsListStore.setIsOpenChangePriceModal(true);
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -74,6 +79,13 @@ export const ProductsList = observer(() => {
             icon={<PlusCircleOutlined />}
           >
             Mahsulot qo&apos;shish
+          </Button>
+          <Button
+            onClick={handleProductPriceChange}
+            type="primary"
+            icon={<PlusCircleOutlined />}
+          >
+            Mahsulotlar narxini oshirish
           </Button>
         </div>
       </div>
@@ -130,6 +142,7 @@ export const ProductsList = observer(() => {
 
 
       {productsListStore.isOpenAddEditProductModal && <AddEditModal />}
+      {productsListStore.isOpenChangePriceModal && <AddPriceModal />}
     </main>
   );
 });

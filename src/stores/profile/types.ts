@@ -26,4 +26,5 @@ export enum IStaffPerKey {
   GET_SUPPLIERS = 'page_supplier',
   GET_STAFFS = 'page_staffs',
   GET_STAFFS_PAYMENTS = 'page_staffs_payments',
+  GET_STAFFS_EXPENSES = 'page_staffs_expenses',
 }

@@ -9,6 +9,8 @@ export interface IOrder {
   payment: IPayment;
   products: IOrderProducts[];
   sum: number;
+  totalSum: number;
+  sale: number;
   debt: number;
   accepted: boolean;
   sellingDate: string;

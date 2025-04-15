@@ -25,6 +25,9 @@ class ProductsApi extends Instance {
 
   deleteProduct = (id: string): Promise<AxiosResponse> =>
     this.delete(`${Endpoints.products}/${id}`);
+
+  changePriceModal = (percentage: number): Promise<AxiosResponse> =>
+    this.patch(Endpoints.productPriceChange, {percentage});
 }
 
 export const productsApi = new ProductsApi(config);

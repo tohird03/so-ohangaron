@@ -7,6 +7,7 @@ export const ROUTES = {
   workers: '/workers',
   workersStaffs: '/workers/staffs',
   workersStaffsPayments: '/workers/staffs-payments',
+  workersExpenses: '/workers/expenses',
 
   // CLIENTS
   clients: '/clients',

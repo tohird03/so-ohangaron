@@ -9,6 +9,7 @@ class ProductsListStore {
   search: string | null = null;
   isOpenAddEditProductModal = false;
   singleProduct: IProducts | null = null;
+  isOpenChangePriceModal = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -37,6 +38,10 @@ class ProductsListStore {
 
   setSingleProduct = (singleProduct: IProducts | null) => {
     this.singleProduct = singleProduct;
+  };
+
+  setIsOpenChangePriceModal = (isOpenChangePriceModal: boolean) => {
+    this.isOpenChangePriceModal = isOpenChangePriceModal;
   };
 
   reset() {

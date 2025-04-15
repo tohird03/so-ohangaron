@@ -202,7 +202,7 @@ export const Orders = observer(() => {
               icon={<DownloadOutlined />}
               loading={downloadLoading}
             >
-              Exelda Yuklash
+              Excelda Yuklash
             </Button>
           </Tooltip>
         </div>

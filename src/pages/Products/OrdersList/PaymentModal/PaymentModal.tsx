@@ -37,6 +37,8 @@ export const PaymentModal = observer(() => {
 
   const handleSubmitPayment = (values: IPaymentType) => {
     setLoadingPayment(true);
+    console.log(values);
+
     const orderPaymentData: IAddEditPaymentParams = {
       ...values,
       orderId: ordersStore.orderPayment?.orderId,
@@ -97,6 +99,7 @@ export const PaymentModal = observer(() => {
           cash,
           card,
           transfer,
+          sale: ordersStore?.order?.sale,
           other,
           description,
           clientId: ordersStore.orderPayment?.client?.id,
@@ -121,6 +124,18 @@ export const PaymentModal = observer(() => {
     );
 
     setTotalPayment(total);
+  };
+
+  const handleChangeSale = (value: number | null) => {
+    if (ordersStore?.order?.totalSum) {
+      const totalOrderSum = ordersStore?.order?.totalSum;
+
+      setTotalPrice(totalOrderSum - ((totalOrderSum * (value || 0)) / 100));
+
+      return;
+    }
+
+    setTotalPrice(ordersStore?.order?.sum!);
   };
 
   const handleAddonClick = (fieldName: string) => {
@@ -197,6 +212,19 @@ export const PaymentModal = observer(() => {
               label: `${ordersStore.orderPayment?.client?.name} ${ordersStore.orderPayment?.client?.phone}`,
             }]}
             allowClear
+          />
+        </Form.Item>
+        <Form.Item
+          label="Mijoz uchun chegirma"
+          name="sale"
+          initialValue={0}
+        >
+          <InputNumber
+            placeholder="Chegirma qiymati"
+            defaultValue={0}
+            style={{ width: '100%' }}
+            onChange={handleChangeSale}
+            formatter={(value) => priceFormat(value!)}
           />
         </Form.Item>
         <Form.Item

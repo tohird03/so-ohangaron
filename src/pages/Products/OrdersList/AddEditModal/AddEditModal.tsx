@@ -769,19 +769,6 @@ export const AddEditModal = observer(() => {
             formatter={(value) => priceFormat(value!)}
           />
         </Form.Item>
-        <Form.Item
-          name="sum"
-          initialValue={priceFormat(ordersStore?.order?.sum)}
-          label="Umumiy qiymati"
-        >
-          <InputNumber
-            placeholder="Sotuvning umumiy qiymati"
-            style={{ width: '100%' }}
-            ref={countInputRef}
-            formatter={(value) => priceFormat(value!)}
-            onChange={handleChangeTotalPrice}
-          />
-        </Form.Item>
         <Button
           onClick={handleCreateOrUpdateOrder}
           type="primary"

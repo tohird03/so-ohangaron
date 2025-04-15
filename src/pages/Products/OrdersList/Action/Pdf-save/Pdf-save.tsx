@@ -68,11 +68,23 @@ export const MyDocument = forwardRef<any, Props>(({ order }, ref) => (
         <View>
           <View style={styles.totalCalcTextWrapper}>
             <Text style={styles.totalCalcText}>Жами сумма:</Text>
+            <Text style={styles.totalCalcPriceText}>{order?.totalSum}</Text>
+          </View>
+          <View style={styles.totalCalcTextWrapper}>
+            <Text style={styles.totalCalcText}>Чегирма:</Text>
+            <Text style={styles.totalCalcPriceText}>{order?.sale}</Text>
+          </View>
+          <View style={styles.totalCalcTextWrapper}>
+            <Text style={styles.totalCalcText}>Сотув сумма:</Text>
             <Text style={styles.totalCalcPriceText}>{order?.sum}</Text>
           </View>
           <View style={styles.totalCalcTextWrapper}>
             <Text style={styles.totalCalcText}>Тулов килинди:</Text>
             <Text style={styles.totalCalcPriceText}>{order?.payment?.totalPay || 0}</Text>
+          </View>
+          <View style={styles.totalCalcTextWrapper}>
+            <Text style={styles.totalCalcText}>Карэга:</Text>
+            <Text style={styles.totalCalcPriceText}>{order?.debt || 0}</Text>
           </View>
         </View>
       </View>

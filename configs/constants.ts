@@ -9,7 +9,7 @@ export enum Mode {
   Production = 'production'
 }
 
-export const DEV_SERVER_PORT = 4040;
+export const DEV_SERVER_PORT = 1212;
 
 export const moduleFileExtensions = [
   'js',
